@@ -21,6 +21,11 @@
         <link rel="stylesheet" href="css/default.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
+        <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+        </script>
+        <script type = "text/javascript">
+           google.charts.load('current', {packages: ['corechart','calendar']});     
+        </script>
     </head>
     <body>
 
@@ -196,6 +201,78 @@
                         </div>
                     </div>
                 </div>
+            </section>
+            <section>
+                <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
+                </div>
+                <script language = "JavaScript">
+                   function drawChart() {
+                      // Define the chart to be drawn.
+                      var data = new google.visualization.DataTable();
+                      data.addColumn({ type: 'date', id: 'Date' });
+                      data.addColumn({ type: 'number', id: 'Students' });
+                      data.addRows([
+                         [ new Date(2023, 3, 13), 50 ],
+                         [ new Date(2023, 3, 14), 50 ],
+                         [ new Date(2023, 3, 15), 49 ],
+                         [ new Date(2023, 3, 16), 48 ],
+                         [ new Date(2023, 3, 17), 50 ],
+                      
+                         [ new Date(2023, 4, 1), 50 ],
+                         [ new Date(2023, 4, 2), 50 ],
+                         [ new Date(2023, 4, 3), 49 ],
+                         [ new Date(2023, 4, 4), 48 ],
+                         [ new Date(2023, 4, 5), 50 ], 
+                      
+                         [ new Date(2023, 5, 4), 40 ],
+                         [ new Date(2023, 5, 5), 50 ],
+                         [ new Date(2023, 5, 10), 48 ],
+                         [ new Date(2023, 5, 11), 50 ],
+                         [ new Date(2023, 5, 12), 42 ],
+                         [ new Date(2023, 5, 20), 45 ],
+                         [ new Date(2023, 5, 21), 46 ],
+                         [ new Date(2023, 5, 29), 45 ],
+                      
+                    
+                      ]);
+          
+                      
+                      // Set chart options
+                      var options = {
+                         'title':'Foot Traffic',
+                         'width':550,
+                         'height':400,
+                         calendar: {
+                         
+                            yearLabel: {
+                               fontName: 'Times-Roman',
+                               fontSize: 32,
+                               color: '#1A8763',
+                               bold: true,
+                               italic: true
+                            },
+                         
+                            monthOutlineColor: {
+                               stroke: '#981b48',
+                               strokeOpacity: 0.8,
+                               strokeWidth: 2
+                            },
+                         
+                            unusedMonthOutlineColor: {
+                               stroke: '#bc5679',
+                               strokeOpacity: 0.8,
+                               strokeWidth: 1
+                            }		 
+                         }
+                      };
+          
+                      // Instantiate and draw the chart.
+                      var chart = new google.visualization.Calendar(document.getElementById('container'));
+                      chart.draw(data, options);
+                   }
+                   google.charts.setOnLoadCallback(drawChart);
+                </script>
+          
             </section>
             <!-- s-details-area-end -->
         </main>
